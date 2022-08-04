@@ -1,32 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+import { AppWrap } from '../../wrapper';
 import { images } from '../../constants';
 import './About.scss';
 import { urlFor, client } from '../../client';
-
-// const abouts = [
-//   {
-//     title: 'Web Developments',
-//     description: 'I am a good developer',
-//     imgURL: images.about01,
-//   },
-//   {
-//     title: 'Web Design',
-//     description: 'I am a good developer',
-//     imgURL: images.about02,
-//   },
-//   {
-//     title: 'UI/UX',
-//     description: 'I am a good developer',
-//     imgURL: images.about03,
-//   },
-//   {
-//     title: 'Web Animations',
-//     description: 'I am a good developer',
-//     imgURL: images.about04,
-//   },
-// ];
 
 const About = () => {
   const [abouts, setAbouts] = useState([]);
@@ -35,6 +13,8 @@ const About = () => {
     const query = '*[_type == "about" ]';
     client.fetch(query).then((data) => setAbouts(data));
   }, []);
+
+  console.log('abouts', abouts);
 
   return (
     <>
@@ -68,4 +48,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AppWrap(About, 'about', 'app__about');
